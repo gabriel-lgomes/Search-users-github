@@ -6,26 +6,22 @@ import { UserContext } from '../context/UserContext';
 function Input() {
 
   const [input, setInput] = useState(""); 
-  const {setUser} = useContext(UserContext);
-
   const navigate = useNavigate();
+  const {setUser} = useContext(UserContext);
+ 
 
   const handleClick = (e) => { 
-
     e.preventDefault(); 
-     
     setUser(input);
     setInput("");
- 
     navigate("/profile");
-
   }
  
   return (
     <div className="h-screen flex flex-col justify-center items-center">
       <div className="grid items-center justify-center">
         <h1 className="text-4xl italic text-primary font-light text-center">Search Devs</h1>
-        <form className="flex items-center w-[400px] text-center my-3">
+        <form onSubmit={handleClick} className="flex items-center md:w-[400px] lg:w-[400px] sm:w-4/6 text-center my-3">
           <input 
             type="text" 
             id="first_name" 
@@ -34,7 +30,7 @@ function Input() {
             value={input} 
             onChange={(e) => setInput(e.target.value)} 
           />
-          <button type="button" className="flex items-center gap-2 bg-primary rounded-r-md px-2 py-2 h-[50px] w-[120px] text-slate-400 font-light"><AiOutlineSearch className="text-xl" onClick={handleClick}/> Buscar</button> 
+          <button type="submit" className="flex items-center gap-2 bg-primary rounded-r-md px-2 py-2 h-[50px] md:w-[120px] lg:w-[120px] sm:w-2/6 text-slate-400 font-light"><AiOutlineSearch className="text-xl"/> Buscar</button> 
         </form>
       </div> 
 
